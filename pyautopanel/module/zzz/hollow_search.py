@@ -1,7 +1,7 @@
 import os
 import time
 
-import pyautorain.tool.ctl as ctl
+import pyautopanel.tool.ctl as ctl
 
 IMAGE_DIR = os.path.dirname(__file__)
 OLDCITYTRAM_IMG = os.path.join(IMAGE_DIR, 'image', 'oldcitytram.png')
@@ -26,6 +26,7 @@ SDOOR3_IMG = os.path.join(IMAGE_DIR, 'image', 'sdoor3.png')
 SDOOR4_IMG = os.path.join(IMAGE_DIR, 'image', 'sdoor4.png')
 TARGET_IMG = os.path.join(IMAGE_DIR, 'image', 'target.png')
 TARGET2_IMG = os.path.join(IMAGE_DIR, 'image', 'target2.png')
+TARGET3_IMG = os.path.join(IMAGE_DIR, 'image', 'target3.png')
 GIVEUP_IMG = os.path.join(IMAGE_DIR, 'image', 'giveup.png')
 COMPLETED_IMG = os.path.join(IMAGE_DIR, 'image', 'completed.png')
 CASE1_IMG = os.path.join(IMAGE_DIR, 'image', 'case1.png')
@@ -140,7 +141,7 @@ def do_floor_two():
     time.sleep(2)
     ctl.click(5)
     time.sleep(1)
-    ctl.find_click(TARGET_IMG, TARGET2_IMG)
+    ctl.find_click(TARGET_IMG, TARGET2_IMG, TARGET3_IMG)
     ctl.find_click(SURESMALL_IMG)
 
 
