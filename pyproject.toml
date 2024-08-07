@@ -7,6 +7,14 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
+pyautogui = "^0.9.54"
+pillow = "^10.4.0"
+opencv-python = "^4.10.0.84"
+keyboard = "^0.13.5"
+pydirectinput = "^1.0.4"
+oathtool = "^2.3.1"
+pyperclip = "^1.9.0"
+ttkbootstrap = "^1.10.1"
 
 
 [build-system]
