@@ -50,7 +50,7 @@ class TripPanel:
     def _create_title(self):
         self.title_frame = ttk.Frame(self.root)
         self.title_frame.pack(side=TOP, fill=BOTH)
-        self.title = ttk.Label(self.title_frame, text='Trip', font=('TkDefaultFont', 14, 'bold'), bootstyle=PRIMARY)
+        self.title = ttk.Label(self.title_frame, text='Trip', font=('Segoe UI', 18, 'bold'), bootstyle=PRIMARY)
         self.title.pack(side=LEFT, fill=BOTH)
         self.title_button = ttk.Button(self.title_frame, text='Refresh', bootstyle=WARNING,
                                        command=self.enable_all_button)
@@ -75,21 +75,24 @@ class TripPanel:
     def _create_infosafe(self):
         self.infosafe_frame = ttk.Labelframe(self.root, text='InfoSafe', padding=(10, 10, 10, 10), bootstyle=DEFAULT)
         self.infosafe_frame.pack(side=TOP, fill=BOTH, pady=10)
-        self.infosafe_button = ttk.Button(self.infosafe_frame, text='Check', bootstyle=(PRIMARY, OUTLINE), width=14, command=self._click_infosafe_adjust)
+        self.infosafe_button = ttk.Button(self.infosafe_frame, text='Check', bootstyle=(PRIMARY, OUTLINE), width=14,
+                                          command=self._click_infosafe_adjust)
         self.infosafe_button.pack(side=LEFT, fill=BOTH, padx=10, expand=YES)
         self.button_list.append(self.infosafe_button)
 
     def _create_qconfig(self):
         self.qconfig_frame = ttk.Labelframe(self.root, text='QConfig', padding=(10, 10, 10, 10), bootstyle=DEFAULT)
         self.qconfig_frame.pack(side=TOP, fill=BOTH, pady=10)
-        self.qconfig_button = ttk.Button(self.qconfig_frame, text='Review', bootstyle=(INFO, OUTLINE), width=14, command=self._click_qconfig_publish)
+        self.qconfig_button = ttk.Button(self.qconfig_frame, text='Review', bootstyle=(INFO, OUTLINE), width=14,
+                                         command=self._click_qconfig_publish)
         self.qconfig_button.pack(side=LEFT, fill=BOTH, padx=10, expand=YES)
         self.button_list.append(self.qconfig_button)
 
     def _create_xshell(self):
         self.xshell_frame = ttk.Labelframe(self.root, text='XShell', padding=(10, 10, 10, 10), bootstyle=DEFAULT)
         self.xshell_frame.pack(side=TOP, fill=BOTH, pady=10)
-        self.xshell_button = ttk.Button(self.xshell_frame, text='Login', bootstyle=(WARNING, OUTLINE), width=14, command=self._click_xshell_login)
+        self.xshell_button = ttk.Button(self.xshell_frame, text='Login', bootstyle=(WARNING, OUTLINE), width=14,
+                                        command=self._click_xshell_login)
         self.xshell_button.pack(side=LEFT, fill=BOTH, padx=10, expand=YES)
         self.button_list.append(self.xshell_button)
 
