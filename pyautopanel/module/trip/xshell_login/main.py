@@ -2,8 +2,8 @@ import os
 
 import pyautogui
 
-from pyautorain.module.trip.xshell_login.auth import get_auth_code
-from pyautorain.tool import ctl
+from pyautopanel.module.trip.xshell_login.auth import get_auth_code
+from pyautopanel.tool import ctl
 
 DIR = os.path.dirname(__file__)
 SERVER_IMG = os.path.join(DIR, 'img', 'server.png')

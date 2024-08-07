@@ -1,34 +1,21 @@
-import tkinter as tk
-from tkinter import ttk
-import threading
-import time
+import logging
 
-def print_numbers(button):
-    # 在这里执行长时间运行的任务
-    for i in range(1, 4):
-        print(i)
-        time.sleep(1)  # 模拟耗时操作
+import pyautopanel.panel.trip_panel as trip_panel
 
 
-    # 任务完成后重新激活按钮
-
-def on_click(button):
-    # 禁用按钮
-    button.config(state='disabled')
-
-    # 在子线程中执行任务
-    thread = threading.Thread(target=print_numbers, args=(button,))
-    thread.start()
-    thread.join()
-    button.config(state='normal')
+def setup_logging():
+    # 配置日志格式以包含时间戳
+    logging.basicConfig(
+        level=logging.DEBUG,
+        format='%(asctime)s - %(levelname)s - %(message)s',
+        datefmt='%Y-%m-%d %H:%M:%S'
+    )
 
 
+def main():
+    setup_logging()
+    trip_panel.main()
 
-root = tk.Tk()
-root.title("TTK Button Example")
 
-# 创建一个 ttk.Button 实例
-button = ttk.Button(root, text="Click me!", command=lambda: on_click(button))
-button.pack(pady=20)
-
-root.mainloop()
+if __name__ == '__main__':
+    main()
