@@ -1,5 +1,6 @@
 import os
-import pyautopanel.tool.ctl as ctl
+
+import pyautopanel.trip.tool.ctl as ctl
 
 DIR = os.path.dirname(__file__)
 IMG_CONFIRM = os.path.join(DIR, 'img', 'confirm.png')

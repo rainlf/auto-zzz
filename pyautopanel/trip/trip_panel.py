@@ -1,14 +1,15 @@
+import logging
 import threading
 
 import ttkbootstrap as ttk
 from ttkbootstrap.constants import *
 
-import pyautopanel.module.trip.captain_publish.publish_b as publish_b
-import pyautopanel.module.trip.captain_publish.publish_test as publish_test
-import pyautopanel.module.trip.infosafe_adjust.main as infosafe_adjust
-import pyautopanel.module.trip.qconfig_publish.main as qconfig_publish
-import pyautopanel.module.trip.xshell_login.main as xshell_login
-from pyautopanel.tool.notify import Notify
+import pyautopanel.trip.captain_publish.publish_b as publish_b
+import pyautopanel.trip.captain_publish.publish_test as publish_test
+import pyautopanel.trip.infosafe_adjust.main as infosafe_adjust
+import pyautopanel.trip.qconfig_publish.main as qconfig_publish
+import pyautopanel.trip.xshell_login.main as xshell_login
+from pyautopanel.trip.tool.notify import Notify
 
 
 class TripPanel:
@@ -19,10 +20,10 @@ class TripPanel:
         self._create_title()
         self._create_separator()
         self._create_captain()
-        self._create_infosafe()
         self._create_separator()
         self._create_qconfig()
         self._create_xshell()
+        self._create_infosafe()
 
     def _on_closing(self):
         print("wait thread done")
@@ -35,7 +36,7 @@ class TripPanel:
         self.app = ttk.Window(
             title='RainAutoTools',
             themename='litera',  # 设置主题
-            size=(380, 480),  # 窗口的大小 （宽, 高）
+            size=(380, 500),  # 窗口的大小 （宽, 高）
             position=(1500, 480),  # 窗口所在的位置
             minsize=(0, 0),  # 窗口的最小宽高
             maxsize=(1920, 1080),  # 窗口的最大宽高
@@ -83,7 +84,7 @@ class TripPanel:
     def _create_qconfig(self):
         self.qconfig_frame = ttk.Labelframe(self.root, text='QConfig', padding=(10, 10, 10, 10), bootstyle=DEFAULT)
         self.qconfig_frame.pack(side=TOP, fill=BOTH, pady=10)
-        self.qconfig_button = ttk.Button(self.qconfig_frame, text='Review', bootstyle=(INFO, OUTLINE), width=14,
+        self.qconfig_button = ttk.Button(self.qconfig_frame, text='Publish', bootstyle=(INFO, OUTLINE), width=14,
                                          command=self._click_qconfig_publish)
         self.qconfig_button.pack(side=LEFT, fill=BOTH, padx=10, expand=YES)
         self.button_list.append(self.qconfig_button)
@@ -141,7 +142,17 @@ class ButtonCommand:
         thread.start()
 
 
+def setup_logging():
+    # 配置日志格式以包含时间戳
+    logging.basicConfig(
+        level=logging.DEBUG,
+        format='%(asctime)s - %(levelname)s - %(message)s',
+        datefmt='%Y-%m-%d %H:%M:%S'
+    )
+
+
 def main():
+    setup_logging()
     app = TripPanel()
     app.run()
 

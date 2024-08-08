@@ -3,8 +3,8 @@ import time
 
 import pyautogui
 
-import pyautopanel.module.trip.captain_publish.approve as approve
-import pyautopanel.tool.ctl as ctl
+import pyautopanel.trip.captain_publish.approve as approve
+import pyautopanel.trip.tool.ctl as ctl
 
 IMAGE_DIR = os.path.dirname(__file__)
 

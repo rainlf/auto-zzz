@@ -3,7 +3,7 @@ import time
 
 import pyautogui
 
-import pyautopanel.tool.ctl as ctl
+import pyautopanel.trip.tool.ctl as ctl
 
 IMAGE_DIR = os.path.dirname(__file__)
 IMG_IMAGEVERSION = os.path.join(IMAGE_DIR, 'img', 'imageversion.png')

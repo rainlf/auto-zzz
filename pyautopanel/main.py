@@ -1,15 +1,9 @@
 import logging
 
-import pyautopanel.panel.trip_panel as trip_panel
+import pyautopanel.trip.trip_panel as trip_panel
 
 
-def setup_logging():
-    # 配置日志格式以包含时间戳
-    logging.basicConfig(
-        level=logging.DEBUG,
-        format='%(asctime)s - %(levelname)s - %(message)s',
-        datefmt='%Y-%m-%d %H:%M:%S'
-    )
+
 
 
 def main():

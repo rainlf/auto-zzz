@@ -14,7 +14,7 @@ poetry shell
 ```
 ### 执行自动化模块
 ```shell
-python -m pyautorain.module.zzz.hollow_search
+python -m pyautorain.zzz.hollow_search
 ```
 
 ## 参考
