@@ -34,7 +34,7 @@ class Window:
             Window.check_success = False
         # move window to left top corner
         zzz.activate()
-        zzz.resizeTo(1920, 1080)
+        # zzz.resizeTo(1920, 1080)
         zzz.moveTo(0, 0)
         Window.check_success = True
 

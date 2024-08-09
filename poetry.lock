@@ -12,6 +12,20 @@ files = [
 ]
 
 [[package]]
+name = "click"
+version = "8.1.7"
+description = "Composable command line interface toolkit"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "click-8.1.7-py3-none-any.whl", hash = "sha256:ae74fb96c20a0277a1d615f1e4d73c8414f5a98db8b799a7931d1582f3390c28"},
+    {file = "click-8.1.7.tar.gz", hash = "sha256:ca9853ad459e787e2192211578cc907e7594e294c7ccc834310722b41b9ca6de"},
+]
+
+[package.dependencies]
+colorama = {version = "*", markers = "platform_system == \"Windows\""}
+
+[[package]]
 name = "colorama"
 version = "0.4.6"
 description = "Cross-platform colored terminal text."
@@ -21,6 +35,30 @@ files = [
     {file = "colorama-0.4.6-py2.py3-none-any.whl", hash = "sha256:4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6"},
     {file = "colorama-0.4.6.tar.gz", hash = "sha256:08695f5cb7ed6e0531a20572697297273c47b8cae5a63ffc6d6ed5c201be6e44"},
 ]
+
+[[package]]
+name = "deptry"
+version = "0.19.0"
+description = "A command line utility to check for unused, missing and transitive dependencies in a Python project."
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "deptry-0.19.0-cp38-abi3-macosx_10_12_x86_64.whl", hash = "sha256:074bfb613c1789e7489c735159356a8e7f260b0cf85193c6cc5887abcdabe5cc"},
+    {file = "deptry-0.19.0-cp38-abi3-macosx_11_0_arm64.whl", hash = "sha256:8fdfe2531fa773e5849b46d8d0ca851341aeeba3dc285b1a3f560a2a468676ba"},
+    {file = "deptry-0.19.0-cp38-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:248c34d78f83da111379a43e37c78d5e049661735e43ab5934307b2ba265431d"},
+    {file = "deptry-0.19.0-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:3b18c45b52c2822fd1186e73e22274ceec85384ed0616d0454ae874724ac0846"},
+    {file = "deptry-0.19.0-cp38-abi3-win_amd64.whl", hash = "sha256:79028cbc885ff8cd0a11fc0954bb0b552bf656fe6df73084df7014cbd902516c"},
+    {file = "deptry-0.19.0-pp310-pypy310_pp73-macosx_10_12_x86_64.whl", hash = "sha256:4fb158d0e4747e8dc21b2160f9a11540c01ede318cf558d702d485cb89119214"},
+    {file = "deptry-0.19.0-pp310-pypy310_pp73-macosx_11_0_arm64.whl", hash = "sha256:bd80e70a2b306732d9c35019480a32452c00f74cbbe81b4a9791917fceeb2a0d"},
+    {file = "deptry-0.19.0-pp310-pypy310_pp73-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:25f3b0e46b9936b3e9bb08aa9aa2f88a56d7d3bc14f0180844da4997670f21ab"},
+    {file = "deptry-0.19.0-pp310-pypy310_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:bbd13b8619d4fcfa0a06f752de5b92d552bdf71cfed41b2cf22cd9a16e28f4f2"},
+    {file = "deptry-0.19.0-pp310-pypy310_pp73-win_amd64.whl", hash = "sha256:fe61febc0ba979b20678d232daa4c6df31949f63d5dcaa5c363a5f1ffac9b887"},
+    {file = "deptry-0.19.0.tar.gz", hash = "sha256:df5899d63a4e607bc9b2a091483b8e07ea98e021f2872defb1fd44573ae8c9a7"},
+]
+
+[package.dependencies]
+click = ">=8.0.0,<9"
+colorama = {version = ">=0.4.6", markers = "sys_platform == \"win32\""}
 
 [[package]]
 name = "keyboard"
@@ -3269,6 +3307,16 @@ dev = ["pre-commit (==3.5.0)", "pre-commit (==3.7.0)", "pytest (==8.2.0)", "pyte
 docs = ["furo (==2024.4.27)", "pyenchant (==3.2.2)", "sphinx (==7.1.2)", "sphinx (==7.3.7)", "sphinx-autobuild (==2021.3.14)", "sphinx-autobuild (==2024.4.16)", "sphinx-copybutton (==0.5.2)", "sphinx-tabs (==3.4.5)", "sphinxcontrib-spelling (==8.0.0)"]
 
 [[package]]
+name = "tesseract"
+version = "0.1.3"
+description = "Tesselation based Recovery of Amorphous halo Concentrations"
+optional = false
+python-versions = "*"
+files = [
+    {file = "tesseract-0.1.3.tar.gz", hash = "sha256:4ab908f06ff15b60959ed0f200bddf8309ed02e6435ddc29445961cf8e3f5365"},
+]
+
+[[package]]
 name = "ttkbootstrap"
 version = "1.10.1"
 description = "A supercharged theme extension for tkinter that enables on-demand modern flat style themes inspired by Bootstrap."
@@ -3299,4 +3347,4 @@ dev = ["black (>=19.3b0)", "pytest (>=4.6.2)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "0481ad7d77ac741f86750ff8195ce9622e59ea4f51441e544faeff525e712bf2"
+content-hash = "392c749d84c2989981cf0f059d89fff803560c7bc4e7ab733a0219cabdf080ec"
