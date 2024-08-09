@@ -1,0 +1,18 @@
+floor0:
+    - type: 'text'
+      value: '旧都列车'
+    - type: 'text'
+      value: '旧都列车·前线'
+    - type: 'text'
+      value: '下一步'
+    - type: 'text'
+      value: '出战'
+floor1:
+    - type: 'text'
+      value: '旧都列车'
+    - type: 'text'
+      value: '旧都列车·前线'
+    - type: 'text'
+      value: '下一步'
+    - type: 'text'
+      value: '出战'
