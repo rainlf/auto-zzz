@@ -1,5 +1,6 @@
 import ttkbootstrap as ttk
 from PIL import Image
+from loguru import logger
 from ttkbootstrap.constants import *
 
 Image.CUBIC = Image.BICUBIC
@@ -7,7 +8,6 @@ Image.CUBIC = Image.BICUBIC
 
 class ZzzPanel:
     def __init__(self):
-        self.button_list = []
         self._create_panel()
 
     def _create_panel(self):
@@ -24,16 +24,23 @@ class ZzzPanel:
         self.app.resizable(False, False)
 
         # root
-        root = ttk.Frame(self.app, padding=(20, 20, 20, 20))
+        root = ttk.Frame(self.app, padding=(20, 10, 20, 20))
         root.pack(side=TOP, fill=BOTH)
 
         # title
         title_frame = ttk.Frame(root)
-        title_frame.pack(side=TOP, fill=BOTH)
+        title_frame.pack(side=TOP, fill=BOTH, pady=10)
         title = ttk.Label(title_frame, text='ZZZ', font=('Segoe UI', 18, 'bold'), bootstyle=PRIMARY)
         title.pack(side=LEFT)
-        title_button = ttk.Button(title_frame, text='STOP', bootstyle=WARNING, command=self.enable_all_button)
-        title_button.pack(side=RIGHT)
+        stop_button = ttk.Button(title_frame, text='STOP', bootstyle=DANGER, command=self._click_stop_button())
+        stop_button.pack(side=RIGHT)
+        restart_button = ttk.Button(title_frame, text='RESTART', bootstyle=SUCCESS,
+                                    command=self._click_restart_button())
+        restart_button.pack(side=RIGHT, padx=5)
+        pause_button = ttk.Button(title_frame, text='PAUSE', bootstyle=WARNING,
+                                  command=self._click_pause_button())
+        pause_button.pack(side=RIGHT)
+
         test_button = ttk.Button(title_frame, text='Test', bootstyle=(PRIMARY, OUTLINE),
                                  command=self._test)
         test_button.pack(side=RIGHT, padx=10)
@@ -46,31 +53,54 @@ class ZzzPanel:
         button_frame = ttk.Frame(root)
         button_frame.pack(side=TOP, fill=BOTH, pady=10)
         # start button
-        start_button = ttk.Button(button_frame, text='Start Hollow Explore', bootstyle=(PRIMARY, OUTLINE),
-                                  command=self._click_start_button)
-        start_button.pack(side=LEFT)
+        self.start_button = ttk.Button(button_frame, text='Start Hollow Explore', bootstyle=(PRIMARY, OUTLINE),
+                                       command=self._click_start_button)
+        self.start_button.pack(side=LEFT)
         # combo box button
         self.combo = ttk.Combobox(button_frame, values=["IceWolf", "No.11", "BoomSister"], width=14, state='readonly')
         self.combo.pack(side=RIGHT, pady=10)
         self.combo.current(0)
-        self.button_list.append(start_button)
 
-
+        # meter frame
+        meter_frame = ttk.Frame(root)
+        meter_frame.pack(side=TOP, fill=BOTH, pady=10)
+        self.meter = ttk.Meter(
+            master=meter_frame,
+            metersize=250,  # 直径
+            amounttotal=50,  # 总值
+            amountused=0,  # 当前值
+            subtext='Round',  # 子文本
+            metertype=ARC,  # 类型为弧形
+            stripethickness=6,  # 条纹厚度
+            bootstyle=SUCCESS,  # 样式
+            textright='')  # 右边的文字
+        self.meter.pack(side=LEFT, fill=BOTH, expand=YES, padx=10, pady=10)
 
     def _test(self):
-        print(self.combo.get())
+        logger.info(self.combo.get())
+        self.combo.current(1)
+        self.meter.configure(amountused=110)
+        self.start_button.config(state=ACTIVE)
+        # self.meter.config()
 
     def _click_start_button(self):
-        self.disable_all_button()
+        self.disable_start_button()
         pass
 
-    def disable_all_button(self):
-        for button in self.button_list:
-            button.config(state=DISABLED)
+    def _click_stop_button(self):
+        pass
 
-    def enable_all_button(self):
-        for button in self.button_list:
-            button.config(state=NORMAL)
+    def _click_restart_button(self):
+        pass
+
+    def _click_pause_button(self):
+        pass
+
+    def disable_start_button(self):
+        self.start_button.config(state=DISABLED)
+
+    def enable_start_button(self):
+        self.start_button.config(state=ACTIVE)
 
     def run(self):
         self.app.mainloop()
