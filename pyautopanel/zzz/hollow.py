@@ -15,13 +15,12 @@ class Hollow:
         self._paused = False
         while self._running:
             if self._paused:
-                logger.debug('timer paused...')
+                logger.debug('hollow search paused...')
                 time.sleep(1)
                 continue
             self.second += 1
-            logger.debug('timer running...{}'.format(self.second))
-            self._callback(self.time)
-            time.sleep(1)
+            logger.debug('hollow search running...{}')
+            self._callback(self._round)
 
     def pause(self):
         self._paused = True
