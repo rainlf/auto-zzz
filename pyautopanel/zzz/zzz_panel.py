@@ -6,6 +6,7 @@ from loguru import logger
 from ttkbootstrap.constants import *
 
 from pyautopanel.zzz.timer import Timer
+from pyautopanel.zzz.task import Task
 
 Image.CUBIC = Image.BICUBIC
 
@@ -13,6 +14,7 @@ Image.CUBIC = Image.BICUBIC
 class ZzzPanel:
     def __init__(self):
         self._timer = Timer(self._time_update)
+        self._task = Task(self._round_update)
         self._create_panel()
 
     def disable_start_button(self):
@@ -81,7 +83,7 @@ class ZzzPanel:
             master=meter_frame,
             metersize=235,  # 直径
             amounttotal=50,  # 总值
-            amountused=22,  # 当前值
+            amountused=0,  # 当前值
             subtext='Round',  # 子文本
             metertype=ARC,  # 类型为弧形
             stripethickness=6,  # 条纹厚度
@@ -101,7 +103,6 @@ class ZzzPanel:
         pause_button.configure(command=self._click_pause_button)
         self.start_button.configure(command=self._click_start_button)
 
-
     def _test(self):
         logger.info(self.combo.get())
         self.combo.current(1)
@@ -109,24 +110,31 @@ class ZzzPanel:
         self.start_button.config(state=ACTIVE)
         self.time_label.configure(text='00:10:10')
 
+    def _round_update(self, round_num):
+        self.meter.configure(amountused=round_num)
+
     def _time_update(self, time_str):
         self.time_label.configure(text=time_str)
 
     def _click_start_button(self):
         threading.Thread(target=lambda x: x.run(), args=(self._timer,)).start()
+        threading.Thread(target=lambda x: x.run(), args=(self._task,)).start()
         self.disable_start_button()
 
     def _click_stop_button(self):
         self._timer.stop()
+        self._task.stop()
         self.enable_start_button()
         self.set_meter(0)
         self.time_label.configure(text='00:00:00')
 
     def _click_restart_button(self):
         self._timer.restart()
+        self._task.restart()
 
     def _click_pause_button(self):
         self._timer.pause()
+        self._task.pause()
 
 
 def main():
