@@ -16,6 +16,8 @@ oathtool = "^2.3.1"
 pyperclip = "^1.9.0"
 ttkbootstrap = "^1.10.1"
 loguru = "^0.7.2"
+pytesseract = "^0.3.10"
+pygetwindow = "^0.0.9"
 
 
 [build-system]

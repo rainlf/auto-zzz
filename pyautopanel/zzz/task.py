@@ -23,7 +23,6 @@ class Task:
             logger.debug('hollow search running...{}'.format(self._round))
             # hollow search
 
-
     def pause(self):
         self._paused = True
 

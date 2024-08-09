@@ -5,8 +5,9 @@ from PIL import Image
 from loguru import logger
 from ttkbootstrap.constants import *
 
-from pyautopanel.zzz.timer import Timer
 from pyautopanel.zzz.task import Task
+from pyautopanel.zzz.timer import Timer
+from pyautopanel.zzz.window import Window
 
 Image.CUBIC = Image.BICUBIC
 
@@ -117,9 +118,12 @@ class ZzzPanel:
         self.time_label.configure(text=time_str)
 
     def _click_start_button(self):
-        threading.Thread(target=lambda x: x.run(), args=(self._timer,)).start()
-        threading.Thread(target=lambda x: x.run(), args=(self._task,)).start()
-        self.disable_start_button()
+        Window.admin_check()
+        Window.game_check()
+        if Window.check_success:
+            threading.Thread(target=lambda x: x.run(), args=(self._timer,)).start()
+            threading.Thread(target=lambda x: x.run(), args=(self._task,)).start()
+            self.disable_start_button()
 
     def _click_stop_button(self):
         self._timer.stop()
