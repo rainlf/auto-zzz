@@ -1,5 +1,8 @@
 import ttkbootstrap as ttk
+from PIL import Image
 from ttkbootstrap.constants import *
+
+Image.CUBIC = Image.BICUBIC
 
 
 class ZzzPanel:
@@ -31,21 +34,35 @@ class ZzzPanel:
         title.pack(side=LEFT)
         title_button = ttk.Button(title_frame, text='STOP', bootstyle=WARNING, command=self.enable_all_button)
         title_button.pack(side=RIGHT)
+        test_button = ttk.Button(title_frame, text='Test', bootstyle=(PRIMARY, OUTLINE),
+                                 command=self._test)
+        test_button.pack(side=RIGHT, padx=10)
 
         # separator
         separator = ttk.Separator(root, orient='horizontal')
         separator.pack(side=TOP, fill=BOTH, pady=10)
 
-        # button
+        # button frame
         button_frame = ttk.Frame(root)
         button_frame.pack(side=TOP, fill=BOTH, pady=10)
+        # start button
         start_button = ttk.Button(button_frame, text='Start Hollow Explore', bootstyle=(PRIMARY, OUTLINE),
-                                  command=self.disable_all_button)
+                                  command=self._click_start_button)
         start_button.pack(side=LEFT)
-        self.combo = ttk.Combobox(button_frame, values=["IceWolf", "No.11"], width=14, state='readonly')
+        # combo box button
+        self.combo = ttk.Combobox(button_frame, values=["IceWolf", "No.11", "BoomSister"], width=14, state='readonly')
         self.combo.pack(side=RIGHT, pady=10)
         self.combo.current(0)
         self.button_list.append(start_button)
+
+
+
+    def _test(self):
+        print(self.combo.get())
+
+    def _click_start_button(self):
+        self.disable_all_button()
+        pass
 
     def disable_all_button(self):
         for button in self.button_list:
