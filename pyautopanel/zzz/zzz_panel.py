@@ -8,6 +8,7 @@ Image.CUBIC = Image.BICUBIC
 
 class ZzzPanel:
     def __init__(self):
+        self.timer = 0
         self._create_panel()
 
     def _create_panel(self):
