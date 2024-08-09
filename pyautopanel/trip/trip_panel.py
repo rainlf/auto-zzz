@@ -8,7 +8,7 @@ import pyautopanel.trip.captain_publish.publish_b as publish_b
 import pyautopanel.trip.captain_publish.publish_test as publish_test
 import pyautopanel.trip.infosafe_adjust.main as infosafe_adjust
 import pyautopanel.trip.qconfig_publish.main as qconfig_publish
-import pyautopanel.trip.xshell_login.main as xshell_login
+import pyautopanel.trip.xshell_login.login as xshell_login
 from pyautopanel.trip.tool.notify import Notify
 
 

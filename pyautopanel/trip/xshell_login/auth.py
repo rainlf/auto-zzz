@@ -1,10 +1,13 @@
 # -*- coding: UTF-8 -*-
 import oathtool
 import pyperclip
+import os
 
+DIR = os.path.dirname(__file__)
+FILE = os.path.join(DIR, 'rain.txt')
 
 def get_auth_code():
-    with open('rain.txt', 'r') as f:
+    with open(FILE, 'r') as f:
         password = f.readline().strip()
         token = f.readline().strip()
         code = oathtool.generate_otp(token)
