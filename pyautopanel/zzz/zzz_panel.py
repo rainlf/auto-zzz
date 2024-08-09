@@ -111,22 +111,18 @@ class ZzzPanel:
 
     def _click_restart_button(self):
         self._timer.restart()
-        pass
 
     def _click_pause_button(self):
         self._timer.pause()
-        pass
 
     def disable_start_button(self):
         self.start_button.config(state=DISABLED)
 
     def enable_start_button(self):
         self.start_button.config(state=ACTIVE)
-        pass
 
     def set_meter(self, value):
         self.meter.configure(amountused=value)
-        pass
 
     def run(self):
         self.app.mainloop()
