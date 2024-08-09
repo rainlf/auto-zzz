@@ -25,5 +25,5 @@ def test_img():
 
 
 if __name__ == '__main__':
-    test_img()
+    # test_img()
     test_screenshot()
