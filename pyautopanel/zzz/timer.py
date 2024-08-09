@@ -5,21 +5,23 @@ from loguru import logger
 
 
 class Timer:
-    def __init__(self):
+    def __init__(self, _callback):
         self._running = False
         self._paused = False
         self.second = 0
+        self._callback = _callback
 
     def run(self):
         self._running = True
         self._paused = False
         while self._running:
             if self._paused:
-                logger.info('timer paused...')
+                logger.debug('timer paused...')
                 time.sleep(1)
                 continue
             self.second += 1
-            logger.info('timer running...{}'.format(self.second))
+            logger.debug('timer running...{}'.format(self.second))
+            self._callback(self.time)
             time.sleep(1)
 
     def pause(self):
@@ -48,7 +50,7 @@ def main():
     threading.Thread(target=lambda x: x.run(), args=(timer,)).start()
     logger.info('time: {}'.format(timer.time))
     time.sleep(3)
-    
+
     timer.pause()
     logger.info('time: {}'.format(timer.time))
     time.sleep(3)

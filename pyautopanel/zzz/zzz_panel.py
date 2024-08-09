@@ -1,14 +1,18 @@
+import threading
+
 import ttkbootstrap as ttk
 from PIL import Image
 from loguru import logger
 from ttkbootstrap.constants import *
+
+from pyautopanel.zzz.timer import Timer
 
 Image.CUBIC = Image.BICUBIC
 
 
 class ZzzPanel:
     def __init__(self):
-        self.timer = 0
+        self._timer = Timer(self._time_update)
         self._create_panel()
 
     def _create_panel(self):
@@ -25,7 +29,7 @@ class ZzzPanel:
         self.app.resizable(False, False)
 
         # root
-        root = ttk.Frame(self.app, padding=(20, 10, 20, 20))
+        root = ttk.Frame(self.app, padding=(20, 10, 20, 5))
         root.pack(side=TOP, fill=BOTH)
 
         # title
@@ -62,7 +66,7 @@ class ZzzPanel:
         meter_frame.pack(side=TOP, fill=BOTH, pady=10)
         self.meter = ttk.Meter(
             master=meter_frame,
-            metersize=250,  # 直径
+            metersize=235,  # 直径
             amounttotal=50,  # 总值
             amountused=0,  # 当前值
             subtext='Round',  # 子文本
@@ -71,6 +75,12 @@ class ZzzPanel:
             bootstyle=SUCCESS,  # 样式
             textright='')  # 右边的文字
         self.meter.pack(side=LEFT, fill=BOTH, expand=YES, padx=10, pady=10)
+
+        # timer frame
+        time_frame = ttk.Frame(root)
+        time_frame.pack(side=TOP, fill=BOTH, pady=10)
+        self.time_label = ttk.Label(time_frame, text='00:00:00', font=('Segoe UI', 12), bootstyle=PRIMARY)
+        self.time_label.pack(side=RIGHT)
 
         # command
         stop_button.configure(command=self._click_stop_button)
@@ -84,21 +94,27 @@ class ZzzPanel:
         self.combo.current(1)
         self.meter.configure(amountused=110)
         self.start_button.config(state=ACTIVE)
-        # self.meter.config()
+        self.time_label.configure(text='00:10:10')
+
+    def _time_update(self, time_str):
+        self.time_label.configure(text=time_str)
 
     def _click_start_button(self):
+        threading.Thread(target=lambda x: x.run(), args=(self._timer,)).start()
         self.disable_start_button()
-        pass
 
     def _click_stop_button(self):
+        self._timer.stop()
         self.enable_start_button()
         self.set_meter(0)
-        pass
+        self.time_label.configure(text='00:00:00')
 
     def _click_restart_button(self):
+        self._timer.restart()
         pass
 
     def _click_pause_button(self):
+        self._timer.pause()
         pass
 
     def disable_start_button(self):
