@@ -15,7 +15,7 @@ class ZzzPanel:
             title='RainAutoTools',
             themename='litera',  # 设置主题
             size=(380, 480),  # 窗口的大小 （宽, 高）
-            position=(1500, 480),  # 窗口所在的位置
+            position=(1100, 480),  # 窗口所在的位置
             minsize=(0, 0),  # 窗口的最小宽高
             maxsize=(1920, 1080),  # 窗口的最大宽高
             resizable=None,  # 设置窗口是否可以更改大小
@@ -32,17 +32,13 @@ class ZzzPanel:
         title_frame.pack(side=TOP, fill=BOTH, pady=10)
         title = ttk.Label(title_frame, text='ZZZ', font=('Segoe UI', 18, 'bold'), bootstyle=PRIMARY)
         title.pack(side=LEFT)
-        stop_button = ttk.Button(title_frame, text='STOP', bootstyle=DANGER, command=self._click_stop_button())
+        stop_button = ttk.Button(title_frame, text='STOP', bootstyle=DANGER)
         stop_button.pack(side=RIGHT)
-        restart_button = ttk.Button(title_frame, text='RESTART', bootstyle=SUCCESS,
-                                    command=self._click_restart_button())
+        restart_button = ttk.Button(title_frame, text='RESTART', bootstyle=SUCCESS)
         restart_button.pack(side=RIGHT, padx=5)
-        pause_button = ttk.Button(title_frame, text='PAUSE', bootstyle=WARNING,
-                                  command=self._click_pause_button())
+        pause_button = ttk.Button(title_frame, text='PAUSE', bootstyle=WARNING)
         pause_button.pack(side=RIGHT)
-
-        test_button = ttk.Button(title_frame, text='Test', bootstyle=(PRIMARY, OUTLINE),
-                                 command=self._test)
+        test_button = ttk.Button(title_frame, text='Test', bootstyle=(PRIMARY, OUTLINE))
         test_button.pack(side=RIGHT, padx=10)
 
         # separator
@@ -53,8 +49,7 @@ class ZzzPanel:
         button_frame = ttk.Frame(root)
         button_frame.pack(side=TOP, fill=BOTH, pady=10)
         # start button
-        self.start_button = ttk.Button(button_frame, text='Start Hollow Explore', bootstyle=(PRIMARY, OUTLINE),
-                                       command=self._click_start_button)
+        self.start_button = ttk.Button(button_frame, text='Start Hollow Explore', bootstyle=(PRIMARY, OUTLINE))
         self.start_button.pack(side=LEFT)
         # combo box button
         self.combo = ttk.Combobox(button_frame, values=["IceWolf", "No.11", "BoomSister"], width=14, state='readonly')
@@ -76,6 +71,13 @@ class ZzzPanel:
             textright='')  # 右边的文字
         self.meter.pack(side=LEFT, fill=BOTH, expand=YES, padx=10, pady=10)
 
+        # command
+        stop_button.configure(command=self._click_stop_button)
+        restart_button.configure(command=self._click_restart_button)
+        pause_button.configure(command=self._click_pause_button)
+        self.start_button.configure(command=self._click_start_button)
+        test_button.configure(command=self._test)
+
     def _test(self):
         logger.info(self.combo.get())
         self.combo.current(1)
@@ -88,6 +90,8 @@ class ZzzPanel:
         pass
 
     def _click_stop_button(self):
+        self.enable_start_button()
+        self.set_meter(0)
         pass
 
     def _click_restart_button(self):
@@ -101,6 +105,11 @@ class ZzzPanel:
 
     def enable_start_button(self):
         self.start_button.config(state=ACTIVE)
+        pass
+
+    def set_meter(self, value):
+        self.meter.configure(amountused=value)
+        pass
 
     def run(self):
         self.app.mainloop()
