@@ -22,6 +22,7 @@ pytesseract = "^0.3.10"
 cnocr = "^2.3.0.3"
 numpy = "<2"
 onnxruntime = "^1.18.1"
+pyyaml = "^6.0.2"
 
 
 [tool.poetry.group.dev.dependencies]

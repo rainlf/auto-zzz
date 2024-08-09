@@ -1,0 +1,12 @@
+strValue: this is a string
+intValue: 10
+floatValue: 8.5
+booleanValue: false
+listValue:
+  -a
+  -b
+  -c
+  -d
+mapValue:
+  name: pharos
+  age: 25
