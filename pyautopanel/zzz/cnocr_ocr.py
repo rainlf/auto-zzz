@@ -55,8 +55,9 @@ class CnOcrCtl:
                     logger.debug('find continue text: {}, position: {}, {}'.format(text, x, y))
                     if click:
                         pyautogui.click(x, y)
-                    return
+                    return True
         logger.debug('none find continue text')
+        return False
 
     def click_target(self, target, click=True):
         screenshot = pyautogui.screenshot(region=screen_region)
@@ -64,11 +65,12 @@ class CnOcrCtl:
         for result in results:
             if target in result['text']:
                 x, y = self._center(result['position'])
-                logger.debug('find target text: {}, position: {}, {}'.format(text, x, y))
+                logger.debug('find target text: {}, position: {}, {}'.format(target, x, y))
                 if click:
                     pyautogui.click(x, y)
-                return
-        logger.debug('none find target text')
+                return True
+        logger.debug('none find target text: {}'.format(target))
+        return False
 
     @staticmethod
     def _center(position: list[any]) -> (int, int):
