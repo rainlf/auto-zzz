@@ -15,6 +15,18 @@ class ZzzPanel:
         self._timer = Timer(self._time_update)
         self._create_panel()
 
+    def disable_start_button(self):
+        self.start_button.config(state=DISABLED)
+
+    def enable_start_button(self):
+        self.start_button.config(state=ACTIVE)
+
+    def set_meter(self, value):
+        self.meter.configure(amountused=value)
+
+    def run(self):
+        self.app.mainloop()
+
     def _create_panel(self):
         self.app = ttk.Window(
             title='RainAutoTools',
@@ -43,8 +55,9 @@ class ZzzPanel:
         restart_button.pack(side=RIGHT, padx=5)
         pause_button = ttk.Button(title_frame, text='PAUSE', bootstyle=WARNING)
         pause_button.pack(side=RIGHT)
-        test_button = ttk.Button(title_frame, text='Test', bootstyle=(PRIMARY, OUTLINE))
-        test_button.pack(side=RIGHT, padx=10)
+        # test_button = ttk.Button(title_frame, text='Test', bootstyle=(PRIMARY, OUTLINE))
+        # test_button.pack(side=RIGHT, padx=10)
+        # test_button.configure(command=self._test)
 
         # separator
         separator = ttk.Separator(root, orient='horizontal')
@@ -68,7 +81,7 @@ class ZzzPanel:
             master=meter_frame,
             metersize=235,  # 直径
             amounttotal=50,  # 总值
-            amountused=0,  # 当前值
+            amountused=22,  # 当前值
             subtext='Round',  # 子文本
             metertype=ARC,  # 类型为弧形
             stripethickness=6,  # 条纹厚度
@@ -87,7 +100,7 @@ class ZzzPanel:
         restart_button.configure(command=self._click_restart_button)
         pause_button.configure(command=self._click_pause_button)
         self.start_button.configure(command=self._click_start_button)
-        test_button.configure(command=self._test)
+
 
     def _test(self):
         logger.info(self.combo.get())
@@ -114,18 +127,6 @@ class ZzzPanel:
 
     def _click_pause_button(self):
         self._timer.pause()
-
-    def disable_start_button(self):
-        self.start_button.config(state=DISABLED)
-
-    def enable_start_button(self):
-        self.start_button.config(state=ACTIVE)
-
-    def set_meter(self, value):
-        self.meter.configure(amountused=value)
-
-    def run(self):
-        self.app.mainloop()
 
 
 def main():
