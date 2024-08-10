@@ -122,6 +122,8 @@ class ZzzPanel:
 
     def _round_update(self, round_num):
         self.meter.configure(amountused=round_num)
+        if round_num > 50:
+            self._click_stop_button()
 
     def _time_update(self, time_str):
         self.time_label.configure(text=time_str)

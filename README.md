@@ -1,22 +1,22 @@
 # 绝区零 全自动零号业绩
 
----
-绝区零空洞每周需要反复刷取。So Tired !   
+## 原理
+利用 `cnocr` 和  `pyautogui + opencv` 实现目标识别，配合 `yaml脚本` 实现自动化探索
+
+## 说明
+绝区零空洞每周需要反复刷取。`So Tired !`   
 于是有了自动探索零号空洞，获取全部零号业绩  
-由于系统限制一周业绩获取上限大约在1k左右，一次探索获取20业绩，应用会在第50次探索后自动停止  
-Enjoy it !
+由于系统限制一周业绩获取上限大约在 `1k` 左右，一次探索获取 `20` 业绩，应用会在第 `50` 次探索后自动停止
 
 ![zzz-panel](./asserts/panel.png)
 
 ## 安装环境
 
----
 1. python 环境，python version >= 3.10.0，安装方式参考 [python官网](https://www.python.org/downloads/)
 2. poetry 工具，安装方式参考 [poetry官网](https://python-poetry.org/docs/#installation)
 
 ## 安装应用
 
----
 进入项目根目录
 ### 安装依赖
 ```shell
@@ -33,7 +33,6 @@ python -m pyautopanel_panel
 
 ## 游戏配置
 
----
 ### 设置第二攻击键位为 `y`  
 ![setting](./asserts/setting.png)  
 
@@ -47,10 +46,11 @@ python -m pyautopanel_panel
 
 ## 免责声明
 
----
+- 本软件旨在为用户提供合法的游戏辅助功能，以增强游戏体验。用户必须遵守所有适用的法律、法规以及相关游戏的服务条款。
+- 本软件开源、免费，仅供学习交流使用，禁止用于商业用途。开发者团队拥有本项目的最终解释权。
+- 本软件不对用户使用本软件的行为负责，包括但不限于用户使用本软件造成的游戏账号封禁、游戏数据丢失等情况。  
 
-本软件是一个外部工具旨在自动化绝区零的游戏玩法。并遵守相关法律法规。该软件包旨在减少用户游戏负担,并且它不打算以任何方式破坏游戏平衡或提供任何不公平的优势。该软件包不会以任何方式修改任何游戏文件或游戏代码。
 
-This software is an external tool designed to automate ZenlessZoneZero's gameplay. and comply with relevant laws and regulations. This package is designed to provide simplicity and user interaction with the game through features, and it is not intended to upset the balance of the game in any way or provide any unfair advantage. This package does not modify any game files or game code in any way.  
-
-本软件开源、免费，仅供学习交流使用，禁止用于商业用途。开发者团队拥有本项目的最终解释权。使用本软件产生的所有问题与本项目与开发者团队无关。若您遇到商家使用本软件进行代练并收费，可能是设备与时间等费用，产生的问题及后果与本软件无关。  
+- This software aims to provide users with legitimate game assistance features to enhance their gaming experience. Users must comply with all applicable laws, regulations, and relevant game terms of service.  
+- This software is open source, free, for learning and communication purposes only, and is prohibited from being used for commercial purposes. The developer team has the final interpretation right of this project.  
+- This software is not responsible for the user's use of this software, including but not limited to game account bans, game data loss, and other situations caused by the user's use of this software.  
