@@ -14,6 +14,7 @@ class Task:
         self._round = 0
         self._stage_idx = 0
         self._step_idx = 0
+        self._situation = None
         self._fighter = fighter
         self._callback = _callback
 
@@ -23,6 +24,7 @@ class Task:
         self._round = 0
         self._stage_idx = 0
         self._step_idx = 0
+        self._situation = None
         self._load_config()
         self._callback(1)
 
@@ -52,6 +54,7 @@ class Task:
         self._round = 0
         self._stage_idx = 0
         self._step_idx = 0
+        self._situation = None
 
     def _load_config(self):
         with open(TASK_CONFIG, 'r', encoding='utf-8') as f:
@@ -76,15 +79,14 @@ class Task:
         # check stage done
         if self._step_idx >= len(steps):
             self._step_idx = 0
+            self._stage_idx += 1
             if next_stage:
-                if next_stage == 'floor1.1':
-                    self._task_stages.remove('floor1.2')
-                else:
-                    self._task_stages.remove('floor1.1')
-
+                self._situation = next_stage
                 self._stage_idx = self._task_stages.index(next_stage)
-            else:
-                self._stage_idx += 1
+            if not next_stage and (self._situation == 'floor1.1' or self._situation == 'floor1.2'):
+                self._stage_idx = self._task_stages.index('floor2')
+                self._situation = None
+            # all stages done
             if self._stage_idx >= len(self._task_stages):
                 self._stage_idx = 0
                 self._round += 1

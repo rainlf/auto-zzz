@@ -64,11 +64,13 @@ def _do_mission_select_situation(step, x, y):
     find2, x2, y2 = gui_ctl.find_position(IMG_EXIT)
     if find and find2:
         if x2 > x and y2 < y:
+            logger.info('detect situation: floor1.1')
             return True, 'floor1.1'
         if x2 > x and y2 > y:
+            logger.info('detect situation: floor1.2')
             return True, 'floor1.2'
     else:
-        return False, 'floor1.2'
+        return False, None
 
 
 def _do_mission_fight(step, x, y):
@@ -90,8 +92,9 @@ def _do_mission_fight(step, x, y):
 def _find_mission_select_help(step):
     help_text = [
         '恢复身体',
+        '做好降压',
         '邦布插件',
-        '拿点侵蚀',
+        '拿点垃圾',
         '帮我催化',
     ]
     return ocr_ctl.find_targets(help_text)

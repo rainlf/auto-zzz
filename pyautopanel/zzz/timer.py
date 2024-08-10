@@ -20,7 +20,7 @@ class Timer:
                 time.sleep(1)
                 continue
             self.second += 1
-            logger.debug('timer running...{}'.format(self.second))
+            # logger.debug('timer running...{}'.format(self.second))
             self._callback(self._time)
             time.sleep(1)
 

@@ -73,7 +73,7 @@ class ZzzPanel:
         self.start_button = ttk.Button(button_frame, text='Start Hollow Explore', bootstyle=(PRIMARY, OUTLINE))
         self.start_button.pack(side=LEFT)
         # combo box button
-        self.fighter_combo = ttk.Combobox(button_frame, values=["IceWolf", "No.11", "BoomSister"], width=14, state='readonly')
+        self.fighter_combo = ttk.Combobox(button_frame, values=["No.11", "BoomSister", "IceWolf"], width=14, state='readonly')
         self.fighter_combo.pack(side=RIGHT, pady=10)
         self.fighter_combo.current(0)
 

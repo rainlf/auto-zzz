@@ -8,6 +8,7 @@ taskStages:
       value: "下一步"
     - type: "text"
       value: "出战"
+    - type: "mission_talk"
       sleep: 17
   floor1:
     - type: "text"
@@ -30,6 +31,7 @@ taskStages:
       value: "w"
     - type: "press"
       value: "w"
+      sleep: 2
     - type: "text"
       value: "确认继续后无法返回"
       sleep: 15
@@ -38,10 +40,14 @@ taskStages:
   floor1.2:
     - type: "press"
       value: "s"
-    - type: "mission_cancel_backup"
+#    - type: "mission_cancel_backup"
+#      sleep: 1
+    - type: "mission_talk"
       sleep: 1
     - type: "mission_talk"
       sleep: 1
+    - type: "mission_talk"
+      sleep: 2
     - type: "longPress"
       value: "r"
       sleep: 1
@@ -57,6 +63,7 @@ taskStages:
       sleep: 1
     - type: "press"
       value: "d"
+      sleep: 2
     - type: "text"
       value: "确认继续后无法返回"
       sleep: 15
@@ -125,10 +132,10 @@ taskStages:
       value: "强行闯入通道"
     - type: "mission_talk"
     - type: "mission_talk"
-      sleep: 5
-    - type: "mission_talk"
-    - type: "mission_talk"
       sleep: 2
+    - type: "mission_talk"
+    - type: "mission_talk"
+      sleep: 1
     - type: "press"
       value: "a"
       sleep: 1
@@ -140,7 +147,10 @@ taskStages:
       value: "存入齿轮硬币"
     - type: "text"
       value: "存入齿轮硬币"
-      sleep: 3
+      sleep: 1
+    - type: "text"
+      value: "离开"
+      sleep: 1
   floor2.2:
     - type: "press"
       value: "esc"
@@ -151,7 +161,7 @@ taskStages:
       sleep: 5
     - type: "text"
       value: "完成"
-      sleep: 6
+      sleep: 10
 
 continueWordsQe:
   - "确认"
@@ -161,6 +171,7 @@ continueWordsQe:
 continueWordsIn:
   - "假面研究者"
   - "呼叫增援"
+  - "回复生命值"
   - "前线补给据点"
   - "异化检疫门"
   - "零号银行"
