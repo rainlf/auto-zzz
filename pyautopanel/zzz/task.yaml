@@ -140,7 +140,7 @@ taskStages:
       value: "存入齿轮硬币"
     - type: "text"
       value: "存入齿轮硬币"
-      sleep: 1
+      sleep: 3
   floor2.2:
     - type: "press"
       value: "esc"

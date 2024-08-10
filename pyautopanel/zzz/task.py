@@ -24,6 +24,7 @@ class Task:
         self._stage_idx = 0
         self._step_idx = 0
         self._load_config()
+        self._callback(1)
 
     def run(self):
         self._init()
@@ -31,7 +32,7 @@ class Task:
         logger.info('task running..., fighter: {}'.format(self._fighter))
         while self._running:
             if self._paused:
-                logger.debug('hollow search paused...')
+                # logger.debug('hollow search paused...')
                 time.sleep(1)
                 continue
             # logger.debug('hollow search running...{}'.format(self._round))
@@ -87,8 +88,8 @@ class Task:
             if self._stage_idx >= len(self._task_stages):
                 self._stage_idx = 0
                 self._round += 1
+                self._callback(self._round + 1)
                 logger.debug('all stages done: {}'.format(self._round))
-                self._running = False
 
 
 if __name__ == '__main__':

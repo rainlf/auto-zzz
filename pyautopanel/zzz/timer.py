@@ -16,7 +16,7 @@ class Timer:
         self._paused = False
         while self._running:
             if self._paused:
-                logger.debug('timer paused...')
+                # logger.debug('timer paused...')
                 time.sleep(1)
                 continue
             self.second += 1
