@@ -8,12 +8,25 @@ taskStages:
       value: "下一步"
     - type: "text"
       value: "出战"
+      sleep: 15
+  floor1:
+    - type: "text"
+      value: "拒绝他的好意"
+      sleep: 5
+    - type: "mission"
+      value: "select_situation"
+#  floor1.1:
+#    - type: "longPress"
+#      value: "r"
+#    - type: "text"
+#      value: "出战"
 
-continueWords:
+continueWordsQe:
+  - "确认"
   - "确定"
   - "完成"
   - "选择"
-  - "下一步"
+continueWordsIn:
   - "假面研究者"
   - "异化检疫门"
   - "零号银行"

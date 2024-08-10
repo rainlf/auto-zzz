@@ -36,7 +36,7 @@ class Task:
             logger.debug('hollow search running...{}'.format(self._round))
             # do hollow search
             self._task()
-            time.sleep(1)
+            # time.sleep(1)
 
     def pause(self):
         self._paused = True
@@ -70,9 +70,6 @@ class Task:
         if task_executor.do_step(step):
             # success do next step
             self._step_idx += 1
-        else:
-            # failed try continue
-            task_executor.do_continue()
 
         # check stage done
         if self._step_idx >= len(steps):

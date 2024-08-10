@@ -24,34 +24,37 @@ class CnOcrCtl:
     def _load_config(self):
         with open(TASK_CONFIG, 'r', encoding='utf-8') as f:
             data = yaml.safe_load(f)
-            self.continue_text = data['continueWords']
+            self.continue_word_eq = data['continueWordsQe']
+            self.continue_word_in = data['continueWordsIn']
 
-    def click_continue(self, click=True):
+    def find_continue(self):
         screenshot = pyautogui.screenshot(region=screen_region)
         results: List[Dict[str, Any]] = self.ocr.ocr(screenshot)
         for result in results:
-            for text in self.continue_text:
+            for text in self.continue_word_eq:
+                if text == result['text']:
+                    x, y = self._center(result['position'])
+                    logger.debug('find continue text: {}, position: {}, {}'.format(text, x, y))
+                    return True, x, y
+
+            for text in self.continue_word_in:
                 if text in result['text']:
                     x, y = self._center(result['position'])
                     logger.debug('find continue text: {}, position: {}, {}'.format(text, x, y))
-                    if click:
-                        pyautogui.click(x, y)
-                    return True
+                    return True, x, y
         logger.debug('none find continue text')
-        return False
+        return False, None, None
 
-    def click_target(self, target, click=True):
+    def find_target(self, target, click=True):
         screenshot = pyautogui.screenshot(region=screen_region)
         results: List[Dict[str, Any]] = self.ocr.ocr(screenshot)
         for result in results:
             if target in result['text']:
                 x, y = self._center(result['position'])
                 logger.debug('find target text: {}, position: {}, {}'.format(target, x, y))
-                if click:
-                    pyautogui.click(x, y)
-                return True
+                return True, x, y
         logger.debug('none find target text: {}'.format(target))
-        return False
+        return False, None, None
 
     @staticmethod
     def _center(position: list[any]) -> (int, int):
@@ -63,7 +66,8 @@ class CnOcrCtl:
 def main():
     ctl = CnOcrCtl()
     while True:
-        ctl.click_continue(click=False)
+        x, y = ctl.find_continue()
+        pyautogui.moveTo(x, y)
         time.sleep(1)
     pass
 
