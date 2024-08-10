@@ -5,7 +5,7 @@ import yaml
 from cnocr import CnOcr
 from loguru import logger
 
-from pyautopanel.zzz.constants import *
+from autozzz.constants import *
 
 '''
 Demo 站点: https://huggingface.co/spaces/breezedeus/CnOCR-Demo

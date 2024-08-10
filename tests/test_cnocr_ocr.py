@@ -11,7 +11,7 @@ Demo 站点: https://huggingface.co/spaces/breezedeus/CnOCR-Demo
 screen_region = (0, 0, 1940, 1100)
 
 
-def test_img(path='test2.png'):
+def test_img(path='test.png'):
     # img = Image.open(path).convert('RGB')
     img = Image.open(path)
     ocr = CnOcr()

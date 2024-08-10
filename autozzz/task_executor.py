@@ -6,10 +6,10 @@
 import pyautogui
 from loguru import logger
 
-from pyautopanel.zzz.cnocr_ctl import CnOcrCtl
-from pyautopanel.zzz.constants import *
-from pyautopanel.zzz.fighter import *
-from pyautopanel.zzz.pyautogui_ctl import GuiCtl
+from autozzz.cnocr_ctl import CnOcrCtl
+from autozzz.constants import *
+from autozzz.fighter import *
+from autozzz.pyautogui_ctl import GuiCtl
 
 ocr_ctl = CnOcrCtl()
 gui_ctl = GuiCtl()

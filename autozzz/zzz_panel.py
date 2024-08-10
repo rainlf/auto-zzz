@@ -5,11 +5,15 @@ from PIL import Image
 from loguru import logger
 from ttkbootstrap.constants import *
 
-from pyautopanel.zzz.task import Task
-from pyautopanel.zzz.timer import Timer
-from pyautopanel.zzz.window import Window
+from autozzz.task import Task
+from autozzz.timer import Timer
+from autozzz.window import Window
 
 Image.CUBIC = Image.BICUBIC
+
+'''
+UI参考: https://ttkbootstrap.readthedocs.io/en/latest/  
+'''
 
 
 class ZzzPanel:
@@ -73,7 +77,8 @@ class ZzzPanel:
         self.start_button = ttk.Button(button_frame, text='Start Hollow Explore', bootstyle=(PRIMARY, OUTLINE))
         self.start_button.pack(side=LEFT)
         # combo box button
-        self.fighter_combo = ttk.Combobox(button_frame, values=["No.11", "BoomSister", "IceWolf"], width=14, state='readonly')
+        self.fighter_combo = ttk.Combobox(button_frame, values=["No.11", "BoomSister", "IceWolf"], width=14,
+                                          state='readonly')
         self.fighter_combo.pack(side=RIGHT, pady=10)
         self.fighter_combo.current(0)
 

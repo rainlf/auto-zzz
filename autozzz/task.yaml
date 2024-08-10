@@ -135,7 +135,7 @@ taskStages:
       sleep: 2
     - type: "mission_talk"
     - type: "mission_talk"
-      sleep: 1
+      sleep: 3
     - type: "press"
       value: "a"
       sleep: 1
@@ -161,7 +161,7 @@ taskStages:
       sleep: 5
     - type: "text"
       value: "完成"
-      sleep: 10
+      sleep: 11
 
 continueWordsQe:
   - "确认"

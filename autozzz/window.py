@@ -5,7 +5,7 @@ import pygetwindow
 import ttkbootstrap as ttk
 from loguru import logger
 
-from pyautopanel.zzz.notify import Notify
+from autozzz.notify import Notify
 
 
 class Window:

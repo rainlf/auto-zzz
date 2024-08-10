@@ -3,8 +3,8 @@ import time
 import yaml
 from loguru import logger
 
-import pyautopanel.zzz.task_executor as task_executor
-from pyautopanel.zzz.constants import *
+import autozzz.task_executor as task_executor
+from autozzz.constants import *
 
 
 class Task:
