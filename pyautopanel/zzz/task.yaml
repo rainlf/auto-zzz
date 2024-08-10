@@ -1,18 +1,19 @@
-- floor0:
-    - type: 'text'
-      value: '旧都列车'
-    - type: 'text'
-      value: '旧都列车·前线'
-    - type: 'text'
-      value: '下一步'
-    - type: 'text'
-      value: '出战'
-- floor1:
-    - type: 'text'
-      value: '旧都列车'
-    - type: 'text'
-      value: '旧都列车·前线'
-    - type: 'text'
-      value: '下一步'
-    - type: 'text'
-      value: '出战'
+taskStages:
+  floor0:
+    - type: "text"
+      value: "旧都列车"
+    - type: "text"
+      value: "旧都列车·前线"
+    - type: "text"
+      value: "下一步"
+    - type: "text"
+      value: "出战"
+
+continueWords:
+  - "确定"
+  - "完成"
+  - "选择"
+  - "下一步"
+  - "假面研究者"
+  - "异化检疫门"
+  - "零号银行"

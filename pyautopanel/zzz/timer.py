@@ -21,7 +21,7 @@ class Timer:
                 continue
             self.second += 1
             logger.debug('timer running...{}'.format(self.second))
-            self._callback(self.time)
+            self._callback(self._time)
             time.sleep(1)
 
     def pause(self):
@@ -36,7 +36,7 @@ class Timer:
         self.second = 0
 
     @property
-    def time(self):
+    def _time(self):
         hours, remainder = divmod(self.second, 3600)
         minutes, seconds = divmod(remainder, 60)
 

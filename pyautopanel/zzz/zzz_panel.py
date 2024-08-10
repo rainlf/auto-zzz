@@ -14,9 +14,9 @@ Image.CUBIC = Image.BICUBIC
 
 class ZzzPanel:
     def __init__(self):
-        self._timer = Timer(self._time_update)
-        self._task = Task(self._round_update)
         self._create_panel()
+        self._timer = Timer(self._time_update)
+        self._task = Task(self._fighter, self._round_update)
 
     def disable_start_button(self):
         self.start_button.config(state=DISABLED)
@@ -73,9 +73,9 @@ class ZzzPanel:
         self.start_button = ttk.Button(button_frame, text='Start Hollow Explore', bootstyle=(PRIMARY, OUTLINE))
         self.start_button.pack(side=LEFT)
         # combo box button
-        self.combo = ttk.Combobox(button_frame, values=["IceWolf", "No.11", "BoomSister"], width=14, state='readonly')
-        self.combo.pack(side=RIGHT, pady=10)
-        self.combo.current(0)
+        self.fighter_combo = ttk.Combobox(button_frame, values=["IceWolf", "No.11", "BoomSister"], width=14, state='readonly')
+        self.fighter_combo.pack(side=RIGHT, pady=10)
+        self.fighter_combo.current(0)
 
         # meter frame
         meter_frame = ttk.Frame(root)
@@ -105,11 +105,15 @@ class ZzzPanel:
         self.start_button.configure(command=self._click_start_button)
 
     def _test(self):
-        logger.info(self.combo.get())
-        self.combo.current(1)
+        logger.info(self.fighter_combo.get())
+        self.fighter_combo.current(1)
         self.meter.configure(amountused=110)
         self.start_button.config(state=ACTIVE)
         self.time_label.configure(text='00:10:10')
+
+    @property
+    def _fighter(self):
+        return self.fighter_combo.get()
 
     def _round_update(self, round_num):
         self.meter.configure(amountused=round_num)

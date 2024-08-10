@@ -1,49 +1,30 @@
 import time
 
 import pyautogui
+import yaml
 from cnocr import CnOcr
 from loguru import logger
+
+from pyautopanel.zzz.constants import *
 
 '''
 Demo 站点: https://huggingface.co/spaces/breezedeus/CnOCR-Demo
 '''
 
-screen_region = (0, 0, 1920, 1080)
+# 应用窗口可能存在的位置偏移
+# screen_region = (0, 0, 1920, 1080)
+screen_region = (0, 0, 1940, 1100)
 
 
 class CnOcrCtl:
     def __init__(self):
         self.ocr = CnOcr()
-        self.continue_text = [
-            '确定',
-            '完成',
-            '选择',
-            '下一步',
-            '假面研究者',
-            '异化检疫门',
-            '零号银行',
-        ]
-        self.confirm_click_text = [
-            '旧都列车·前线',
-            '旧都列车',
-            '出战',
-            '拒绝他的好意',
+        self._load_config()
 
-            '确认继续',
-            '完成关卡',
-
-            '恢复身体',
-            '做好降压准备',
-            '拿点垃圾物资',
-
-            '强行闯入通道',
-            '存款',
-            '存入齿轮硬币',
-            '存款0次',
-            '离开',
-            '放弃',
-            '完成',
-        ]
+    def _load_config(self):
+        with open(TASK_CONFIG, 'r', encoding='utf-8') as f:
+            data = yaml.safe_load(f)
+            self.continue_text = data['continueWords']
 
     def click_continue(self, click=True):
         screenshot = pyautogui.screenshot(region=screen_region)
