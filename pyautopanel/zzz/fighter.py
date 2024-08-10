@@ -21,9 +21,10 @@ def number11():
 
 
 def ice_wolf():
-    _press('y', 0.5)
-    _press('y', 0.5)
-    _press('y', 0.5)
+    _press('y', 0.1)
+    _press('y', 0.3)
+    _press('y', 0.3)
+    _press('y', 0.3)
     _press('e')
 
 

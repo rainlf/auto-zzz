@@ -8,11 +8,10 @@ taskStages:
       value: "下一步"
     - type: "text"
       value: "出战"
-      sleep: 15
+      sleep: 17
   floor1:
     - type: "text"
       value: "拒绝他的好意"
-      sleep: 5
     - type: "mission_select_situation"
   floor1.1:
     - type: "longPress"
@@ -30,7 +29,31 @@ taskStages:
       sleep: 15
     - type: "mission_fight"
       sleep: 5
+  floor1.2:
+    - type: "press"
+      value: "d"
+    - type: "text"
+      value: "离开"
+      sleep: 1
+    - type: "longPress"
+      value: "r"
+    - type: "press"
+      value: "d"
+    - type: "press"
+      value: "w"
+    - type: "press"
+      value: "s"
+    - type: "press"
+      value: "s"
+    - type: "text"
+      value: "确认继续后无法返回"
+      sleep: 15
+    - type: "mission_fight"
+      sleep: 5
   floor2:
+    - type: "press"
+      value: "s"
+      sleep: 5
     - type: "press"
       value: "w"
     - type: "mission_select_help"
@@ -39,17 +62,19 @@ taskStages:
       value: "d"
     - type: "press"
       value: "w"
+    - type: "press"
+      value: "d"
+    - type: "press"
+      value: "w"
+    - type: "press"
+      value: "d"
+    - type: "mission_talk"
+      sleep: 3
+    - type: "press"
+      value: "d"
+    - type: "press"
+      value: "w"
   floor2.1:
-    - type: "press"
-      value: "d"
-    - type: "press"
-      value: "w"
-    - type: "press"
-      value: "d"
-    - type: "press"
-      value: "d"
-    - type: "press"
-      value: "w"
     - type: "press"
       value: "s"
     - type: "press"
@@ -72,7 +97,7 @@ taskStages:
       value: "a"
     - type: "text"
       value: "强行闯入通道"
-      sleep: 5
+      sleep: 10
     - type: "press"
       value: "a"
     - type: "text"
@@ -83,13 +108,12 @@ taskStages:
       value: "存入齿轮硬币"
     - type: "text"
       value: "存入齿轮硬币"
-#    - type: "text"
-#      value: "离开"
   floor2.2:
     - type: "press"
       value: "esc"
     - type: "text"
       value: "放弃"
+      sleep: 5
     - type: "text"
       value: "完成"
       sleep: 5

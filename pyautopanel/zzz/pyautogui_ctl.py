@@ -15,7 +15,7 @@ class GuiCtl:
 
     def find_position(self, images, confidence=0.8) -> (int, int):
         i = 0
-        while i < 10:
+        while i < 2:
             for image in images:
                 find, x, y = self._find_position(image, confidence=confidence)
                 if find:

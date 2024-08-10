@@ -17,11 +17,6 @@ gui_ctl = GuiCtl()
 fighter = 'No.11'
 
 
-# continue
-def _continue_do_func(x, y):
-    pyautogui.click(x, y)
-
-
 # text
 def _find_text_step(step):
     return ocr_ctl.find_target(step['value'])
@@ -29,42 +24,60 @@ def _find_text_step(step):
 
 def _do_text_step(step, x, y):
     pyautogui.click(x, y)
+    return True, None
 
 
-# image
+# continue
+def _continue_do_func(x, y):
+    pyautogui.click(x, y)
+    return True, None
+
 
 # keyboard
 def _do_press_step(step, x, y):
     pydirectinput.keyDown(step['value'])
     time.sleep(0.1)
     pydirectinput.keyUp(step['value'])
+    return True, None
 
 
 def _do_long_press_step(step, x, y):
     pydirectinput.keyDown(step['value'])
     time.sleep(1)
     pydirectinput.keyUp(step['value'])
+    return True, None
 
 
 # mission
+def _do_mission_talk(step, x, y):
+    find = True
+    while find:
+        find, x, y = ocr_ctl.find_continue()
+        if find:
+            pyautogui.click(x, y)
+            time.sleep(0.3)
+
+    return True, None
+
+
 def _do_mission_select_situation(step, x, y):
+    time.sleep(5)
     find, x, y = gui_ctl.find_position(IMG_ME)
     find2, x2, y2 = gui_ctl.find_position(IMG_EXIT)
     if find and find2:
         if x2 > x and y2 < y:
-            return 'floor1.1'
+            return True, 'floor1.1'
         if x2 > x and y2 > y:
-            return 'floor1.2'
+            return True, 'floor1.2'
     else:
-        logger.warning('none find me or exit, continue find')
-        _do_mission_select_situation(step, x, y)
+        return False, 'floor1.2'
 
 
 def _do_mission_fight(step, x, y):
     while True:
         find, x1, y1 = ocr_ctl.find_target("总计用时")
         if find:
-            break
+            return True, None
         if fighter == 'No.11':
             number11()
         elif fighter == 'IceWolf':
@@ -73,22 +86,31 @@ def _do_mission_fight(step, x, y):
             boom_sister()
         else:
             logger.warning('none matching fighter: {}'.format(fighter))
-            break
+            return False, None
+
+
+def _find_mission_select_help(step):
+    help_text = [
+        '恢复身体',
+        '拿点侵蚀',
+        '帮我催化',
+    ]
+    return ocr_ctl.find_targets(help_text)
 
 
 def _do_mission_select_help(step, x, y):
-    find, x, y = gui_ctl.find_position(IMG_HELP)
-    if find:
-        pyautogui.click(x, y)
+    pyautogui.click(x, y)
+    return True, None
 
 
 func_map = {
     'text': [_find_text_step, _do_text_step],
     'press': [lambda x: (True, None, None), _do_press_step],
     'longPress': [lambda x: (True, None, None), _do_long_press_step],
+    'mission_talk': [lambda x: (True, None, None), _do_mission_talk],
     'mission_select_situation': [lambda x: (True, None, None), _do_mission_select_situation],
     'mission_fight': [lambda x: (True, None, None), _do_mission_fight],
-    'mission_select_help': [lambda x: (True, None, None), _do_mission_select_help],
+    'mission_select_help': [_find_mission_select_help, _do_mission_select_help],
 }
 
 
@@ -113,17 +135,17 @@ def do_step(step):
     s_find, s_x, s_y = step_find_func(step)
 
     # do step target first
+    success = False
     next_stage = None
-    if s_find and s_x and s_y:
-        next_stage = step_do_func(step, s_x, s_y)
+    if s_find:
+        success, next_stage = step_do_func(step, s_x, s_y)
     elif c_find:
         _continue_do_func(c_x, c_y)
-        s_find = False
     else:
-        next_stage = step_do_func(step, s_x, s_y)
+        pass
 
     # sleep after step action
-    if s_find:
+    if success:
         time.sleep(step.get('sleep', 1))
 
-    return s_find, next_stage
+    return success, next_stage

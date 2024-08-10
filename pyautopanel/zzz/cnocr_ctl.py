@@ -42,10 +42,17 @@ class CnOcrCtl:
                     x, y = self._center(result['position'])
                     logger.debug('find continue text: {}, position: {}, {}'.format(text, x, y))
                     return True, x, y
-        logger.debug('none find continue text')
+        # logger.debug('none find continue text')
         return False, None, None
 
-    def find_target(self, target, click=True):
+    def find_targets(self, targets):
+        for target in targets:
+            find, x, y = self.find_target(target)
+            if find:
+                return True, x, y
+        return False, None, None
+
+    def find_target(self, target):
         screenshot = pyautogui.screenshot(region=screen_region)
         results: List[Dict[str, Any]] = self.ocr.ocr(screenshot)
         for result in results:
@@ -53,7 +60,7 @@ class CnOcrCtl:
                 x, y = self._center(result['position'])
                 logger.debug('find target text: {}, position: {}, {}'.format(target, x, y))
                 return True, x, y
-        logger.debug('none find target text: {}'.format(target))
+        # logger.debug('none find target text: {}'.format(target))
         return False, None, None
 
     @staticmethod

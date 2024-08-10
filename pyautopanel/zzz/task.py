@@ -61,7 +61,6 @@ class Task:
     def _task(self):
         # find current stage
         stage = self._task_stages[self._stage_idx]
-        logger.info('current stage: {}'.format(stage))
 
         # find current step
         steps = self._task_config[stage]
@@ -80,7 +79,6 @@ class Task:
                 self._stage_idx = self._task_stages.index(next_stage)
             else:
                 self._stage_idx += 1
-            logger.debug('current stage done: {}'.format(self._stage_idx))
             if self._stage_idx >= len(self._task_stages):
                 self._stage_idx = 0
                 self._round += 1
