@@ -27,13 +27,14 @@ class Task:
 
     def run(self):
         self._init()
+        task_executor.fighter = self._fighter
         logger.info('task running..., fighter: {}'.format(self._fighter))
         while self._running:
             if self._paused:
                 logger.debug('hollow search paused...')
                 time.sleep(1)
                 continue
-            logger.debug('hollow search running...{}'.format(self._round))
+            # logger.debug('hollow search running...{}'.format(self._round))
             # do hollow search
             self._task()
             # time.sleep(1)
@@ -67,14 +68,18 @@ class Task:
         step = steps[self._step_idx]
 
         # do step
-        if task_executor.do_step(step):
+        success, next_stage = task_executor.do_step(step)
+        if success:
             # success do next step
             self._step_idx += 1
 
         # check stage done
         if self._step_idx >= len(steps):
             self._step_idx = 0
-            self._stage_idx += 1
+            if next_stage:
+                self._stage_idx = self._task_stages.index(next_stage)
+            else:
+                self._stage_idx += 1
             logger.debug('current stage done: {}'.format(self._stage_idx))
             if self._stage_idx >= len(self._task_stages):
                 self._stage_idx = 0
