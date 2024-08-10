@@ -12,18 +12,20 @@ taskStages:
   floor1:
     - type: "text"
       value: "拒绝他的好意"
+      sleep: 1
     - type: "mission_talk"
-      sleep: 3
     - type: "mission_select_situation"
   floor1.1:
     - type: "longPress"
       value: "r"
+      sleep: 1
     - type: "press"
       value: "d"
+      sleep: 1
     - type: "mission_talk"
+      sleep: 2
     - type: "press"
       value: "d"
-    - type: "mission_talk"
     - type: "press"
       value: "w"
     - type: "press"
@@ -32,36 +34,51 @@ taskStages:
       value: "确认继续后无法返回"
       sleep: 15
     - type: "mission_fight"
-      sleep: 5
+      sleep: 2
   floor1.2:
     - type: "press"
-      value: "d"
-    - type: "text"
-      value: "离开"
+      value: "s"
+    - type: "mission_cancel_backup"
+      sleep: 1
+    - type: "mission_talk"
       sleep: 1
     - type: "longPress"
       value: "r"
+      sleep: 1
+    - type: "press"
+      value: "s"
+      sleep: 1
+    - type: "mission_talk"
+      sleep: 1
     - type: "press"
       value: "d"
+      sleep: 1
+    - type: "mission_talk"
+      sleep: 1
     - type: "press"
-      value: "w"
-    - type: "press"
-      value: "s"
-    - type: "press"
-      value: "s"
+      value: "d"
     - type: "text"
       value: "确认继续后无法返回"
       sleep: 15
     - type: "mission_fight"
-      sleep: 5
   floor2:
     - type: "mission_talk"
       sleep: 5
     - type: "press"
       value: "w"
+      sleep: 2
     - type: "mission_select_help"
+      sleep: 1
     - type: "mission_talk"
-      sleep: 5
+      sleep: 1
+    - type: "mission_talk"
+      sleep: 1
+    - type: "mission_talk"
+      sleep: 1
+    - type: "mission_talk"
+      sleep: 1
+    - type: "mission_talk"
+      sleep: 2
     - type: "press"
       value: "d"
     - type: "press"
@@ -79,6 +96,9 @@ taskStages:
       value: "d"
     - type: "press"
       value: "w"
+      sleep: 1
+    - type: "mission_talk"
+      sleep: 1
   floor2.1:
     - type: "press"
       value: "s"
@@ -101,15 +121,17 @@ taskStages:
     - type: "press"
       value: "a"
       sleep: 2
-    - type: "mission_talk"
-      sleep: 3
     - type: "text"
       value: "强行闯入通道"
     - type: "mission_talk"
+    - type: "mission_talk"
       sleep: 5
+    - type: "mission_talk"
+    - type: "mission_talk"
+      sleep: 2
     - type: "press"
       value: "a"
-    - type: "mission_talk"
+      sleep: 1
     - type: "text"
       value: "还可存款3次"
     - type: "text"
@@ -124,11 +146,12 @@ taskStages:
       value: "esc"
     - type: "text"
       value: "放弃"
+      sleep: 1
     - type: "mission_talk"
       sleep: 5
     - type: "text"
       value: "完成"
-      sleep: 10
+      sleep: 6
 
 continueWordsQe:
   - "确认"
@@ -137,6 +160,7 @@ continueWordsQe:
   - "选择"
 continueWordsIn:
   - "假面研究者"
+  - "呼叫增援"
   - "前线补给据点"
   - "异化检疫门"
   - "零号银行"

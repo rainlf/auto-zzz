@@ -50,14 +50,12 @@ def _do_long_press_step(step, x, y):
 
 # mission
 def _do_mission_talk(step, x, y):
-    find = True
-    while find:
+    while True:
         find, x, y = ocr_ctl.find_continue()
-        if find:
-            pyautogui.click(x, y)
-            time.sleep(0.3)
-
-    return True, None
+        if not find:
+            return True, None
+        pyautogui.click(x, y)
+        time.sleep(1)
 
 
 def _do_mission_select_situation(step, x, y):
@@ -92,6 +90,7 @@ def _do_mission_fight(step, x, y):
 def _find_mission_select_help(step):
     help_text = [
         '恢复身体',
+        '邦布插件',
         '拿点侵蚀',
         '帮我催化',
     ]
@@ -99,6 +98,19 @@ def _find_mission_select_help(step):
 
 
 def _do_mission_select_help(step, x, y):
+    pyautogui.click(x, y)
+    return True, None
+
+
+def _find_mission_cancel_backup(step):
+    help_text = [
+        '无需增援',
+        '下次再',
+    ]
+    return ocr_ctl.find_targets(help_text)
+
+
+def _do_mission_cancel_backup(step, x, y):
     pyautogui.click(x, y)
     return True, None
 
@@ -111,6 +123,7 @@ func_map = {
     'mission_select_situation': [lambda x: (True, None, None), _do_mission_select_situation],
     'mission_fight': [lambda x: (True, None, None), _do_mission_fight],
     'mission_select_help': [_find_mission_select_help, _do_mission_select_help],
+    'mission_cancel_backup': [_find_mission_cancel_backup, _do_mission_cancel_backup],
 }
 
 
@@ -146,6 +159,6 @@ def do_step(step):
 
     # sleep after step action
     if success:
-        time.sleep(step.get('sleep', 0.3))
+        time.sleep(step.get('sleep', 0.1))
 
     return success, next_stage

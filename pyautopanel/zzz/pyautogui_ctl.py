@@ -15,13 +15,13 @@ class GuiCtl:
 
     def find_position(self, images, confidence=0.8) -> (int, int):
         i = 0
-        while i < 2:
+        while i < 5:
             for image in images:
                 find, x, y = self._find_position(image, confidence=confidence)
                 if find:
                     return True, x, y
             i += 1
-            time.sleep(0.5)
+            time.sleep(0.1)
         return False, None, None
 
     @staticmethod
