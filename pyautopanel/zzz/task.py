@@ -76,6 +76,11 @@ class Task:
         if self._step_idx >= len(steps):
             self._step_idx = 0
             if next_stage:
+                if next_stage == 'floor1.1':
+                    self._task_stages.remove('floor1.2')
+                else:
+                    self._task_stages.remove('floor1.1')
+
                 self._stage_idx = self._task_stages.index(next_stage)
             else:
                 self._stage_idx += 1

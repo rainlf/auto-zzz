@@ -12,14 +12,18 @@ taskStages:
   floor1:
     - type: "text"
       value: "拒绝他的好意"
+    - type: "mission_talk"
+      sleep: 3
     - type: "mission_select_situation"
   floor1.1:
     - type: "longPress"
       value: "r"
     - type: "press"
       value: "d"
+    - type: "mission_talk"
     - type: "press"
       value: "d"
+    - type: "mission_talk"
     - type: "press"
       value: "w"
     - type: "press"
@@ -51,12 +55,12 @@ taskStages:
     - type: "mission_fight"
       sleep: 5
   floor2:
-    - type: "press"
-      value: "s"
+    - type: "mission_talk"
       sleep: 5
     - type: "press"
       value: "w"
     - type: "mission_select_help"
+    - type: "mission_talk"
       sleep: 5
     - type: "press"
       value: "d"
@@ -68,6 +72,7 @@ taskStages:
       value: "w"
     - type: "press"
       value: "d"
+      sleep: 3
     - type: "mission_talk"
       sleep: 3
     - type: "press"
@@ -95,11 +100,16 @@ taskStages:
       value: "s"
     - type: "press"
       value: "a"
+      sleep: 2
+    - type: "mission_talk"
+      sleep: 3
     - type: "text"
       value: "强行闯入通道"
-      sleep: 10
+    - type: "mission_talk"
+      sleep: 5
     - type: "press"
       value: "a"
+    - type: "mission_talk"
     - type: "text"
       value: "还可存款3次"
     - type: "text"
@@ -108,15 +118,17 @@ taskStages:
       value: "存入齿轮硬币"
     - type: "text"
       value: "存入齿轮硬币"
+      sleep: 1
   floor2.2:
     - type: "press"
       value: "esc"
     - type: "text"
       value: "放弃"
+    - type: "mission_talk"
       sleep: 5
     - type: "text"
       value: "完成"
-      sleep: 5
+      sleep: 10
 
 continueWordsQe:
   - "确认"

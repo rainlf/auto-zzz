@@ -146,6 +146,6 @@ def do_step(step):
 
     # sleep after step action
     if success:
-        time.sleep(step.get('sleep', 1))
+        time.sleep(step.get('sleep', 0.3))
 
     return success, next_stage
