@@ -28,7 +28,7 @@ poetry shell
 ```
 ### 运行 ZZZ Panel
 ```shell
-python -m autozzz.zzz_panel
+python -m autozzz
 ```
 
 ## 游戏配置

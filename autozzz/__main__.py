@@ -39,7 +39,8 @@ class ZzzPanel:
             title='RainAutoTools',
             themename='litera',  # 设置主题
             size=(380, 480),  # 窗口的大小 （宽, 高）
-            position=(1100, 480),  # 窗口所在的位置
+            # position=(1100, 480),  # 窗口所在的位置
+            position=(3058, 881),  # 窗口所在的位置
             minsize=(0, 0),  # 窗口的最小宽高
             maxsize=(1920, 1080),  # 窗口的最大宽高
             resizable=None,  # 设置窗口是否可以更改大小

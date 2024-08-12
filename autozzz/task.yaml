@@ -131,11 +131,15 @@ taskStages:
     - type: "text"
       value: "强行闯入通道"
     - type: "mission_talk"
+      sleep: 1
     - type: "mission_talk"
-      sleep: 2
+      sleep: 1
     - type: "mission_talk"
+      sleep: 1
     - type: "mission_talk"
-      sleep: 3
+      sleep: 1
+    - type: "mission_talk"
+      sleep: 5
     - type: "press"
       value: "a"
       sleep: 1
@@ -147,9 +151,9 @@ taskStages:
       value: "存入齿轮硬币"
     - type: "text"
       value: "存入齿轮硬币"
-      sleep: 1
     - type: "text"
       value: "离开"
+    - type: "mission_talk"
       sleep: 1
   floor2.2:
     - type: "press"
