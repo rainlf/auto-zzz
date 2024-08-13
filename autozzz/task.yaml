@@ -1,7 +1,6 @@
 taskStages:
   floor0:
-    - type: "text"
-      value: "旧都列车"
+    - type: "mission_click_oldcitytram"
     - type: "text"
       value: "旧都列车·前线"
     - type: "text"
@@ -139,7 +138,7 @@ taskStages:
     - type: "mission_talk"
       sleep: 1
     - type: "mission_talk"
-      sleep: 5
+      sleep: 3
     - type: "press"
       value: "a"
       sleep: 1
@@ -162,10 +161,10 @@ taskStages:
       value: "放弃"
       sleep: 1
     - type: "mission_talk"
-      sleep: 5
+      sleep: 3
     - type: "text"
       value: "完成"
-      sleep: 11
+      sleep: 7
 
 continueWordsQe:
   - "确认"
