@@ -161,7 +161,7 @@ taskStages:
       value: "放弃"
       sleep: 1
     - type: "mission_talk"
-      sleep: 3
+      sleep: 5
     - type: "text"
       value: "完成"
       sleep: 7
