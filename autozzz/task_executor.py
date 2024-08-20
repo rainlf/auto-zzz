@@ -117,11 +117,19 @@ def _do_mission_cancel_backup(step, x, y):
     return True, None
 
 
-def _find_mission_click_oldcitytram(step):
-    return gui_ctl.find_position(IMG_OLDCTIYTRAM)
+def _find_mission_sure(step):
+    return gui_ctl.find_position(IMG_SURE)
 
 
-def _do_mission_click_oldcitytram(step, x, y):
+def _do_mission_sure(step, x, y):
+    pyautogui.click(x, y)
+    return True, None
+
+def _find_mission_completed(step):
+    return gui_ctl.find_position(IMG_COMPLETED)
+
+
+def _do_mission_completed(step, x, y):
     pyautogui.click(x, y)
     return True, None
 
@@ -135,7 +143,8 @@ func_map = {
     'mission_fight': [lambda x: (True, None, None), _do_mission_fight],
     'mission_select_help': [_find_mission_select_help, _do_mission_select_help],
     'mission_cancel_backup': [_find_mission_cancel_backup, _do_mission_cancel_backup],
-    'mission_click_oldcitytram': [_find_mission_click_oldcitytram, _do_mission_click_oldcitytram],
+    'mission_sure': [_find_mission_sure, _do_mission_sure],
+    'mission_completed': [_find_mission_completed, _do_mission_completed],
 }
 
 
