@@ -79,8 +79,8 @@ def _do_mission_fight(step, x, y):
             return True, None
         if fighter == 'No.11':
             number11()
-        elif fighter == 'IceWolf':
-            ice_wolf()
+        elif fighter == 'TeaGirl':
+            tea_girl()
         elif fighter == 'BoomSister':
             boom_sister()
         else:
