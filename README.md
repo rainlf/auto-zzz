@@ -9,9 +9,8 @@
 ## 功能
 
 - [使用说明](https://github.com/rainlf/auto-zzz#%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E)：使用前必看，不然无法正常使用
-- [自动零号业绩](https://github.com/rainlf/auto-zzz#%E8%87%AA%E5%8A%A8%E9%9B%B6%E5%8F%B7%E4%B8%9A%E7%BB%A9)：自动刷取零号空洞零号业绩
-- [自动小游戏-金牌售后](https://github.com/rainlf/auto-zzz#%E8%87%AA%E5%8A%A8%E5%B0%8F%E6%B8%B8%E6%88%8F-%E9%87%91%E7%89%8C%E5%94%AE%E5%90%8E)
-  ：自动通关游戏活动，金牌售后音游小游戏
+- [自动零号业绩](https://github.com/rainlf/auto-zzz#%E8%87%AA%E5%8A%A8%E9%9B%B6%E5%8F%B7%E4%B8%9A%E7%BB%A9)：自动刷取零号空洞零号业绩 (`python -m autozzz.hollow`)
+- [自动小游戏-金牌售后](https://github.com/rainlf/auto-zzz#%E8%87%AA%E5%8A%A8%E5%B0%8F%E6%B8%B8%E6%88%8F-%E9%87%91%E7%89%8C%E5%94%AE%E5%90%8E) ：自动通关游戏活动，金牌售后音游小游戏 (`python -m autozzz.gold_service`)
 
 ## 使用说明
 
