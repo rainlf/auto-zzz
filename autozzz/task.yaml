@@ -105,56 +105,56 @@ taskStages:
       value: "w"
       sleep: 1
     - type: "mission_talk"
-      sleep: 1
-  floor2.1:
-    - type: "press"
-      value: "s"
-    - type: "press"
-      value: "a"
-    - type: "press"
-      value: "a"
-    - type: "press"
-      value: "w"
-    - type: "press"
-      value: "a"
-    - type: "press"
-      value: "a"
-    - type: "press"
-      value: "a"
-    - type: "press"
-      value: "a"
-    - type: "press"
-      value: "s"
-    - type: "press"
-      value: "a"
-      sleep: 2
-    - type: "text"
-      value: "强行闯入通道"
-    - type: "mission_talk"
-      sleep: 1
-    - type: "mission_talk"
-      sleep: 1
-    - type: "mission_talk"
-      sleep: 1
-    - type: "mission_talk"
-      sleep: 1
-    - type: "mission_talk"
       sleep: 3
-    - type: "press"
-      value: "a"
-      sleep: 1
-    - type: "text"
-      value: "还可存款3次"
-    - type: "text"
-      value: "存入齿轮硬币"
-    - type: "text"
-      value: "存入齿轮硬币"
-    - type: "text"
-      value: "存入齿轮硬币"
-    - type: "text"
-      value: "离开"
-    - type: "mission_talk"
-      sleep: 1
+#  floor2.1:
+#    - type: "press"
+#      value: "s"
+#    - type: "press"
+#      value: "a"
+#    - type: "press"
+#      value: "a"
+#    - type: "press"
+#      value: "w"
+#    - type: "press"
+#      value: "a"
+#    - type: "press"
+#      value: "a"
+#    - type: "press"
+#      value: "a"
+#    - type: "press"
+#      value: "a"
+#    - type: "press"
+#      value: "s"
+#    - type: "press"
+#      value: "a"
+#      sleep: 2
+#    - type: "text"
+#      value: "强行闯入通道"
+#    - type: "mission_talk"
+#      sleep: 1
+#    - type: "mission_talk"
+#      sleep: 1
+#    - type: "mission_talk"
+#      sleep: 1
+#    - type: "mission_talk"
+#      sleep: 1
+#    - type: "mission_talk"
+#      sleep: 3
+#    - type: "press"
+#      value: "a"
+#      sleep: 1
+#    - type: "text"
+#      value: "还可存款3次"
+#    - type: "text"
+#      value: "存入齿轮硬币"
+#    - type: "text"
+#      value: "存入齿轮硬币"
+#    - type: "text"
+#      value: "存入齿轮硬币"
+#    - type: "text"
+#      value: "离开"
+#    - type: "mission_talk"
+#      sleep: 1
   floor2.2:
     - type: "press"
       value: "esc"
